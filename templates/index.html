@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .output-container {
+            margin-top: 20px;
+        }
+        .output-container h2 {
+            color: #333;
+        }
+        .output-container p {
+            font-size: 16px;
+            color: #000000;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        .input-container input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input-container button {
+            
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h1>Blog Generator</h1>
+
+        <form method="POST" class="input-container">
+            <input type="text" name="topic" placeholder="Enter a topic..." required>
+            <button type="submit">Generate Blog</button>
+        </form>
+
+       
+        {% if obj.outline or obj.content or obj.blog_post %}
+        <div class="output-container">
+            <h2>Generated Blog :</h2>
+            <p><strong>OUTLINE:</strong> {{ obj.outline if obj.outline else 'No outline generated' }}</p>
+            <p><strong>CONTENT:</strong> {{ obj.content if obj.content else 'No content generated' }}</p>
+            <p><strong>FORMATTED BLOG:</strong></p>
+            <p>{{ obj.blog_post if obj.blog_post else 'No blog post generated' }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
